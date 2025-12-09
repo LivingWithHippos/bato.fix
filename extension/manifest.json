@@ -1,0 +1,90 @@
+{
+  "manifest_version": 3,
+  "name": "Bato.Fix",
+  "version": "2.2",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "bato.fix@com.github.livingwithhippos",
+      "strict_min_version": "113.0",
+      "data_collection_permissions": {
+        "required": [
+          "websiteContent"
+        ]
+      }
+    }
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icon.svg"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.bato.to/*",
+        "*://bato.to/*",
+        "*://*.xbato.com/*",
+        "*://xbato.com/*",
+        "*://*.xbato.net/*",
+        "*://xbato.net/*",
+        "*://*.xbato.org/*",
+        "*://xbato.org/*",
+        "*://*.zbato.com/*",
+        "*://zbato.com/*",
+        "*://*.zbato.net/*",
+        "*://zbato.net/*",
+        "*://*.zbato.org/*",
+        "*://zbato.org/*",
+        "*://*.readtoto.com/*",
+        "*://readtoto.com/*",
+        "*://*.readtoto.net/*",
+        "*://readtoto.net/*",
+        "*://*.readtoto.org/*",
+        "*://readtoto.org/*",
+        "*://*.batocomic.com/*",
+        "*://batocomic.com/*",
+        "*://*.batocomic.net/*",
+        "*://batocomic.net/*",
+        "*://*.batocomic.org/*",
+        "*://batocomic.org/*",
+        "*://*.batotoo.com/*",
+        "*://batotoo.com/*",
+        "*://*.batotwo.com/*",
+        "*://batotwo.com/*",
+        "*://*.battwo.com/*",
+        "*://battwo.com/*",
+        "*://*.comiko.net/*",
+        "*://comiko.net/*",
+        "*://*.comiko.org/*",
+        "*://comiko.org/*",
+        "*://*.mangatoto.com/*",
+        "*://mangatoto.com/*",
+        "*://*.mangatoto.net/*",
+        "*://mangatoto.net/*",
+        "*://*.mangatoto.org/*",
+        "*://mangatoto.org/*",
+        "*://*.dto.to/*",
+        "*://dto.to/*",
+        "*://*.fto.to/*",
+        "*://fto.to/*",
+        "*://*.jto.to/*",
+        "*://jto.to/*",
+        "*://*.hto.to/*",
+        "*://hto.to/*",
+        "*://*.mto.to/*",
+        "*://mto.to/*",
+        "*://*.wto.to/*",
+        "*://wto.to/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_end"
+    }
+  ]
+}

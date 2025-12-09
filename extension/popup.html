@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg-color: #f9f9fa;
+      --text-color: #0c0c0d;
+      --border-color: #d7d7db;
+      --accent-color: #0060df;
+      --accent-hover: #003eaa;
+      --danger-color: #d70022;
+      --warning-bg: #fff44f;
+      --warning-text: #333;
+    }
+
+    body {
+      width: 320px;
+      padding: 0;
+      margin: 0;
+      font-family: monospace, monospace;
+      font-size: 13px;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+    }
+
+    /* Header */
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border-color);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #737373;
+    }
+
+    /* Reload Banner */
+    #reload-bar {
+      background-color: var(--warning-bg);
+      color: var(--warning-text);
+      padding: 8px 16px;
+      display: none; /* Hidden by default */
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e0d000;
+      font-weight: 600;
+    }
+
+    #reload-btn {
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 2px;
+      padding: 4px 8px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    /* Main Content Wrapper */
+    #main-content {
+      transition: opacity 0.3s;
+    }
+
+    /* When disabled, dim the content */
+    #main-content.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    /* Add Rule Section */
+    .add-section {
+      background: #ededf0;
+      padding: 12px 16px;
+      display: grid;
+      grid-template-columns: auto 40px auto 40px auto;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .add-section span { font-weight: 500; color: #555; }
+
+    input[type="text"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 4px;
+      border: 1px solid var(--border-color);
+      border-radius: 2px;
+      text-align: center;
+      font-family: monospace;
+      font-size: 14px;
+    }
+
+    button#add-btn {
+      grid-column: span 5;
+      margin-top: 8px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 6px;
+      border-radius: 2px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    #error-msg {
+      background-color: #fde8e8;
+      color: var(--danger-color);
+      padding: 8px 16px;
+      font-size: 11px;
+      border-bottom: 1px solid #fad1d1;
+      display: none;
+    }
+
+    #rules-list {
+    padding: 0;
+    margin: 0 0 1em 0;
+    }
+
+    .rule-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      background: #fff;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .rule-text { font-family: monospace; font-size: 13px; color: #333; }
+
+    .actions { display: flex; align-items: center; gap: 12px; }
+    .delete-btn { color: #999; cursor: pointer; font-size: 18px; line-height: 1; }
+    .delete-btn:hover { color: var(--danger-color); }
+
+    /* Switch Styling */
+    .switch { position: relative; display: inline-block; width: 36px; height: 20px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #d7d7db; transition: .2s; border-radius: 2px; }
+    .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .2s; border-radius: 1px; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+    input:checked + .slider { background-color: var(--accent-color); }
+    input:checked + .slider:before { transform: translateX(16px); }
+  </style>
+</head>
+<body>
+  <header>
+    <h3>Bato.to Fixer</h3>
+    <label class="switch">
+        <input type="checkbox" id="global-toggle">
+        <span class="slider"></span>
+    </label>
+  </header>
+
+  <div id="reload-bar">
+    <span>Changes pending</span>
+    <button id="reload-btn">Reload Page</button>
+  </div>
+
+  <div id="main-content">
+      <div id="error-msg"></div>
+
+      <div class="add-section">
+        <span>Map</span>
+        <input type="text" id="input-from" placeholder="k" maxlength="1">
+        <span>&rarr;</span>
+        <input type="text" id="input-to" placeholder="n" maxlength="1">
+        <button id="add-btn">ADD MAPPING</button>
+      </div>
+
+      <div id="rules-list"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
