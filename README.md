@@ -1,3 +1,7 @@
+# Important
+
+The original bato.to is officialy dead, so this extension has no meaning.
+
 # bato.fix
 Bato.to image server fixer. Swap image servers to avoid issues with broken ones
 
